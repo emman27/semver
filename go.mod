@@ -1,4 +1,4 @@
-module github.com/emman27/semvercmp
+module github.com/emman27/semver
 
 go 1.12
 

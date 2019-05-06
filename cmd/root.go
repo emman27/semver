@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/emman27/semvercmp/pkg/version"
-	"github.com/emman27/semvercmp/pkg/cli"
+	"github.com/emman27/semver/pkg/version"
+	"github.com/emman27/semver/pkg/cli"
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "semvercmp",
-	Short: "Semvercmp is a comparer for semantic version numbers",
+	Use:   "semver",
+	Short: "semver is a comparer for semantic version numbers",
 }
 
 func Execute() {
