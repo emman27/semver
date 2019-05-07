@@ -15,8 +15,8 @@ var Command = &cobra.Command{
 
 var greaterCmd = &cobra.Command{
 	Use:   "greater",
-	Short: "Compares if a version is greater than another",
-	Long: `Compares if a version is greater than another.
+	Short: "Compares if a version is greater or equal than another",
+	Long: `Compares if a version is greater or equal than another. This is typically your usage case when you want to check if a particular version is acceptable
 Effectively,
 	> semver cli greater a b
 will return
@@ -38,7 +38,7 @@ func greater(cmd *cobra.Command, args []string) error {
 	if len(args) != 2 {
 		return fmt.Errorf("wrong number of args given, need 2 arguments but got args: %v", args)
 	}
-	if semver.New(args[0]).Compare(*semver.New(args[1])) != 1 {
+	if semver.New(args[0]).Compare(*semver.New(args[1])) == -1 {
 		fmt.Printf("%s is not greater than %s\n", args[0], args[1])
 		os.Exit(1)
 	}
