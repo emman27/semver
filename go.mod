@@ -21,6 +21,7 @@ require (
 	github.com/sirupsen/logrus v1.4.1 // indirect
 	github.com/spf13/cobra v0.0.3
 	github.com/spf13/viper v1.3.2 // indirect
+	github.com/stretchr/testify v1.3.0
 	github.com/syndtr/gocapability v0.0.0-20180916011248-d98352740cb2 // indirect
 	github.com/urfave/cli v1.20.0 // indirect
 	github.com/vmware/govmomi v0.20.0 // indirect

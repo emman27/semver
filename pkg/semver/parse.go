@@ -28,7 +28,8 @@ func (s *Semver) HasBuildMetadata() bool {
 // Will accept any string that conforms to the semver standard
 // Will also accept strings prefixed with 'v', for convenience purposes
 func FromString(s string) (*Semver, error) {
-	dotSeparated := strings.FieldsFunc(s, isFullStop)
+	onlyVersion := strings.FieldsFunc(s, isHyphen)[0]
+	dotSeparated := strings.FieldsFunc(onlyVersion, isFullStop)
 	major, err := strconv.Atoi(dotSeparated[0])
 	if err != nil {
 		return nil, err
@@ -37,12 +38,21 @@ func FromString(s string) (*Semver, error) {
 	if err != nil {
 		return nil, err
 	}
+	patch, err := strconv.Atoi(dotSeparated[2])
+	if err != nil {
+		return nil, err
+	}
 	return &Semver{
 		Major: uint64(major),
 		Minor: uint64(minor),
+		Patch: uint64(patch),
 	}, nil
 }
 
 func isFullStop(r rune) bool {
 	return r == '.'
+}
+
+func isHyphen(r rune) bool {
+	return r == '-'
 }
